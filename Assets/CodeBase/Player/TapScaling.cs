@@ -16,6 +16,7 @@ namespace CodeBase.Player
         [SerializeField] private Transform finish;
         [SerializeField] private Collider playerCollider;
         [SerializeField] private Collider ballCollider;
+        [SerializeField] private Transform platform;
         private readonly Collider[] collision = new Collider[1];
         private bool isHeld;
         private bool canShoot;
@@ -107,8 +108,11 @@ namespace CodeBase.Player
         }
 
 
-        private void DecreaseScale() =>
+        private void DecreaseScale()
+        {
             playerSphere.localScale -= StaticInfo.DecreaseAmount;
+            platform.localScale -= StaticInfo.PlatformDecreaseAmount;
+        }
 
         private bool IsSmall()
         {
